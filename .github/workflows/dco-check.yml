@@ -1,0 +1,75 @@
+---
+name: DCO Check
+
+"on":
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  dco-check:
+    runs-on: ubuntu-latest
+    name: Check DCO Sign-off
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: DCO Check
+        uses: tim-actions/dco@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Comment on DCO failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const message = `
+            ## ❌ DCO Check Failed
+
+            This pull request has commits that are not signed off with the
+            Developer Certificate of Origin (DCO).
+
+            ### How to fix this:
+
+            1. **For new commits**: Use the \`-s\` flag when committing:
+               \`\`\`bash
+               git commit -s -m "Your commit message"
+               \`\`\`
+
+            2. **For existing commits**: Amend them with sign-off:
+               \`\`\`bash
+               # For the last commit
+               git commit --amend -s --no-edit
+
+               # For multiple commits (replace N with number of commits)
+               git rebase --signoff HEAD~N
+               \`\`\`
+
+            3. **Force push** your changes:
+               \`\`\`bash
+               git push --force-with-lease
+               \`\`\`
+
+            ### What is DCO?
+
+            The Developer Certificate of Origin (DCO) is a lightweight way for
+            contributors to certify that they have the right to submit their
+            contribution under the project's license. Please read our
+            [DCO file](../DCO) and
+            [Contributing Guidelines](../CONTRIBUTING.md)
+            for more information.
+
+            This DCO framework was integrated from
+            TengerTechnologies-Bricklayers to ensure proper governance and
+            legal compliance for contributions.
+            `;
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: message
+            });

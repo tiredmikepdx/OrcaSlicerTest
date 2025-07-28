@@ -74,6 +74,17 @@ Please note that the wiki is a work in progress. We appreciate your patience as 
 - **[Access the wiki here](https://github.com/SoftFever/OrcaSlicer/wiki)**
 - **[Contribute to the wiki](https://github.com/SoftFever/OrcaSlicer/wiki/How-to-wiki)**
 
+# Contributing
+
+We welcome contributions from the community! Please read our [Contributing Guidelines](CONTRIBUTING.md) for information on how to get started, including:
+
+- **[Developer Certificate of Origin (DCO)](DCO)** requirements
+- Code style guidelines
+- Testing procedures
+- Pull request process
+
+All contributions must be signed off with the DCO to ensure proper legal compliance.
+
 # Download
 
 ## Stable Release
@@ -185,6 +196,9 @@ OrcaSlicer was originally forked from Bambu Studio, it was previously known as B
 [Bambu Studio](https://github.com/bambulab/BambuStudio) is forked from [PrusaSlicer](https://github.com/prusa3d/PrusaSlicer) by Prusa Research, which is from [Slic3r](https://github.com/Slic3r/Slic3r) by Alessandro Ranellucci and the RepRap community.
 Orca Slicer incorporates a lot of features from [SuperSlicer](https://github.com/supermerill/SuperSlicer) by @supermerill
 Orca Slicer's logo is designed by community member Justin Levine(@freejstnalxndr).
+
+## Governance and Contribution Framework
+This project's contribution governance framework incorporates elements from [TengerTechnologies-Bricklayers](https://github.com/smoken64/TengerTechnologies-Bricklayers) to ensure proper legal and procedural foundations for community contributions, including Developer Certificate of Origin (DCO) requirements and structured contribution guidelines.
 
 # License
 **Orca Slicer** is licensed under the GNU Affero General Public License, version 3. Orca Slicer is based on Bambu Studio by BambuLab.
